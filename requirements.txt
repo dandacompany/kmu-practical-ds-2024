@@ -1,3 +1,13 @@
 pygwalker==0.3.2
 kaggle
 sweetviz
+
+plotly
+torch
+torchvision
+lightgbm>=4.0.0
+pycaret
+scipy==1.11.0
+comet_ml
+xgboost
+optuna
