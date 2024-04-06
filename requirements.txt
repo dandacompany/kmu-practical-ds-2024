@@ -1,13 +1,20 @@
-pygwalker==0.3.2
+# 데이터 로드 라이브러리
 kaggle
+# 시각화 라이브러리
+pygwalker==0.3.2
 sweetviz
-
 plotly
+# 분석 프레임워크
+scipy==1.11.0
+# MLDL 프레임워크
 torch
 torchvision
 lightgbm>=4.0.0
 pycaret
-scipy==1.11.0
-comet_ml
 xgboost
+# MLops 
+comet_ml
 optuna
+# 데이터베이스 접속도구
+psycopg2-binary
+sqlalchemy
