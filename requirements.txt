@@ -18,3 +18,5 @@ optuna
 # 데이터베이스 접속도구
 psycopg2-binary
 sqlalchemy
+#전처리 도구
+imbalanced-learn
