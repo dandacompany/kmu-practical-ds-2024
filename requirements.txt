@@ -12,6 +12,7 @@ torchvision
 lightgbm>=4.0.0
 pycaret
 xgboost
+tensorflow
 # MLops 
 comet_ml
 optuna
