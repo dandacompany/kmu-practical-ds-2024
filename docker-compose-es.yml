@@ -1,0 +1,38 @@
+version: "3.8"
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.3.0
+    container_name: elasticsearch
+    environment:
+      - node.name=es01
+      - cluster.name=es-docker-cluster
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.security.enabled=false # 보안 기능 비활성화
+      - http.max_header_size=16kb # HTTP 헤더 크기를 8192 바이트에서 16kb로 증가시킴
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9200:9200
+      - 9300:9300
+    volumes:
+      - data01:/usr/share/elasticsearch/data
+    command: >
+      bash -c "bin/elasticsearch-plugin install analysis-nori &&
+      /usr/local/bin/docker-entrypoint.sh"
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl --silent --fail localhost:9200/_cluster/health?wait_for_status=yellow&timeout=50s || exit 1",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+volumes:
+  data01:
+    driver: local

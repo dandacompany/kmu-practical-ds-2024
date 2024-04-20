@@ -13,6 +13,7 @@ lightgbm>=4.0.0
 pycaret
 xgboost
 tensorflow
+mlxtend
 # MLops 
 comet_ml
 optuna
@@ -21,3 +22,5 @@ psycopg2-binary
 sqlalchemy
 #전처리 도구
 imbalanced-learn
+#인터랙티브 도구
+gradio
