@@ -173,7 +173,12 @@ cython_debug/
 .history/
 .cache/
 .kaggle/
-*.csv
 
 lecture05/lecture05.md
 lecture06/lecture06.md
+lecture03/datasets/churn/WA_Fn-UseC_-Telco-Customer-Churn.csv
+lecture05/datasets/creditcardfraud/creditcard.csv
+lecture06/dataset/process_data.csv
+lecture06/dataset/secom.csv
+lecture07/datasets/groceries-dataset/Groceries_dataset.csv
+lecture07/flagged/log.csv
