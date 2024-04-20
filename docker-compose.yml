@@ -57,15 +57,6 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
-  # PostgreSQL 데이터베이스 컨테이너를 추가 설치하겠습니다.
-  # postgresql:
-  #   image: postgres:latest
-  #   environment:
-  #     - POSTGRES_USER=postgres
-  #     - POSTGRES_PASSWORD=postgres
-  #     - POSTGRES_DB=public
-  #   ports:
-  #     - "5433:5432" # 혹시 5432 포트를 사용하는 분들을 위해 포트를 5433으로 변경하였습니다.
 
 # 네트워크를 추가합니다.
 networks:
