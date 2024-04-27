@@ -182,3 +182,8 @@ lecture06/dataset/process_data.csv
 lecture06/dataset/secom.csv
 lecture07/datasets/groceries-dataset/Groceries_dataset.csv
 lecture07/flagged/log.csv
+
+.env
+lecture08/driver/
+lecture08/models/
+
