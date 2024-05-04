@@ -1,0 +1,43 @@
+FROM python:3.11
+
+# install google chrome
+
+# RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+# RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+RUN apt-get -y update
+# RUN apt-get install -y google-chrome-stable
+RUN apt-get install -y ./google-chrome-stable_current_amd64.deb
+
+# install chromedriver
+RUN apt-get install -yqq unzip
+RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`/chromedriver_linux64.zip
+RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
+
+# set display port to avoid crash
+ENV DISPLAY=:99
+
+# upgrade pip
+RUN pip install --upgrade pip
+
+# install selenium
+RUN pip install selenium jupyterlab
+
+WORKDIR /work
+
+USER root
+
+ENV JUPYTER_ENABLE_LAB=yes
+ENV JUPYTER_LAB_ENABLE=yes
+ENV JUPYTER_TOKEN=
+ENV JUPYTER_ALLOW_ORIGIN=*
+ENV JUPYTER_NOTEBOOK_DIR=/work
+ENV JUPYTER_LAB_DIR=/work
+ENV JUPYTER_LAB_PASSWORD=
+ENV JUPYTER_LAB_TOKEN=
+ENV JUPYTER_LAB_ALLOW_ORIGIN=*
+ENV JUPYTER_LAB_URL=/lab
+ENV JUPYTER_LAB_BASE_URL=/lab
+
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--ip 0.0.0.0", "--port 8888", "--NotebookApp.token=''", "--NotebookApp.password=''", "--NotebookApp.allow_origin='*'"]
+

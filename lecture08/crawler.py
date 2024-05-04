@@ -43,6 +43,10 @@ def fetch_data(index, links_slice, data_queue):
     driver = webdriver.Chrome(service=service, options=chrome_options)
     
     try:
+        # 이부분을 추가합니다.(이미지 크롤링을 위함입니다.) ################
+        driver.set_window_size(800, 3000)
+        driver.execute_script("document.body.style.zoom='10%'")
+        ###########################################################
         for url in tqdm(links_slice, desc=f"#{index} 크롤러 수집률"):
             driver.get(url)
             html = driver.page_source
