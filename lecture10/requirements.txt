@@ -1,0 +1,11 @@
+# 데이터 로드 라이브러리
+kaggle
+# 시각화 라이브러리
+plotly
+# 분석 프레임워크
+scipy==1.11.0
+# 데이터베이스 접속도구
+psycopg2-binary
+sqlalchemy
+# 유저 인터페이스
+gradio
