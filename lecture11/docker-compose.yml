@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  # 우리가 사용하는 주피터 노트북 서버 컨테이너입니다.
+  jupyter:
+    image: quay.io/jupyter/datascience-notebook:2024-03-14
+    ports:
+      - "10000:8888" # 다른 주피터 노트북의 포트와 충돌하지 않게 하기 위해 10000번 포트를 사용합니다.
+      - "7862:7862" # gradio 포트
+    volumes:
+      - ${PWD}:/home/jovyan/work
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_LAB_ENABLE=yes
+      - JUPYTER_TOKEN=
+      - JUPYTER_ALLOW_ORIGIN=*
+      - JUPYTER_NOTEBOOK_DIR=/home/jovyan/work
+      - JUPYTER_LAB_DIR=/home/jovyan/work
+      - JUPYTER_LAB_PASSWORD=
+      - JUPYTER_LAB_TOKEN=
+      - JUPYTER_LAB_ALLOW_ORIGIN=*
+      - JUPYTER_LAB_URL=/lab
+      - JUPYTER_LAB_BASE_URL=/lab
+    command:
+      [
+        "/bin/bash",
+        "-c",
+        "pip install -r /home/jovyan/work/lecture11/requirements.txt && start-notebook.sh --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.allow_origin='*'",
+      ]
+
+# 네트워크를 추가합니다.
+networks:
+  default:
+    name: jupyter_network

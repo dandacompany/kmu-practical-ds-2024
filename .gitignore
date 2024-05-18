@@ -190,3 +190,5 @@ lecture08/models/
 lecture10/lecture10.md
 lecture10/flagged/
 lecture10/simulation/*
+
+lecture11/generate_test_dataset.ipynb
