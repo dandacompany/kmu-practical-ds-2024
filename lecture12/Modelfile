@@ -1,0 +1,17 @@
+FROM Llama-3-8B-Data-Science-Interview-QNA.Q4_K_M.gguf
+
+TEMPLATE """{{- if .System }}
+<s>{{ .System }}</s>
+{{- end }}
+<s>Human:
+{{ .Prompt }}</s>
+<s>Assistant:
+"""
+
+SYSTEM """상대방의 요청에 최대한 자세하고 전문가 답게 답해주세요. 모든 응답은 한글로 해주세요."""
+
+PARAMETER temperature 0
+PARAMETER num_predict 3000
+PARAMETER num_ctx 4096
+PARAMETER stop <s>
+PARAMETER stop </s>
