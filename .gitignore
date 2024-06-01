@@ -192,4 +192,10 @@ lecture10/flagged/
 lecture10/simulation/*
 
 lecture11/generate_test_dataset.ipynb
+lecture11/generate_test_dataset_for_exercise.ipynb
 lecture11/.DS_Store
+
+
+.conda/
+.ollama/
+lecture10_marp.md
